@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Todo App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css"> <!-- corrected CSS link -->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1><b><i>WELCOME TO MY TODO APP</i></b></h1>
+        <p><b><i>Todo applications</i></b></p>
+
+        <form class="example" action="/add_task" method="post"> <!-- corrected form action and method -->
+            <input type="text" placeholder="Add a new task" name="task"> <!-- corrected input name -->
+            <button type="submit" style="background-color: turquoise;"><i class="search"></i>Create</button>
+        </form>
+
+        <div class="main">
+            <ul id="tasklist">
+                {% for task in tasks %}
+                <li>
+                    {{ task }}
+                    <form action="/delete/{{ loop.index0 }}" method="post" style="display: inline;"> <!-- corrected form action -->
+                        <button type="submit" style="background-color: red;">Delete</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        <!-- The following script tag is not needed -->
+        <!-- <script src="../app.py" async defer></script> -->
+
+    </div>
+</body>
+
+</html>
